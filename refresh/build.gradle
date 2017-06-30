@@ -33,5 +33,5 @@ publish {
     artifactId = 'refreshLayout'
     publishVersion = '0.1'
     desc = 'RefreshLayout compatibility recyclerView'
-    website = 'https://github.com/vihuela/Retrofitplus'
+    website = 'https://github.com/vihuela/RefreshLayout'
 }

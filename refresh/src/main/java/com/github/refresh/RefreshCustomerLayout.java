@@ -25,21 +25,18 @@ import java.util.List;
 
 
 /**
- * 通过接口联动View与ViewModel
  * <pre>
  *     RefreshListView
-                 .setBaseView(this)
+                 .setStateListener(this)
                  .setRestoreView(getViewModel())
                  .setPageStartOffset(1)
                  .setPageSize(Api.LIST_SIZE)
                  .setViewType(RefreshListView.Refresh_LoadMore)
-                 .setListener(new RefreshListView.IRefreshListener() {
-                @Override
+                 .setRefreshListener(new RefreshListView.IRefreshListener() {
                 public void onRefresh(RefreshLayout refreshLayout) {
 
                 }
 
-                @Override
                 public void onLoadMore(int targetPage) {
 
                 }
@@ -47,7 +44,7 @@ import java.util.List;
                  .setAdapter(mAdapter);
  * </pre>
  */
-public class RefreshCustomerLayout<T> extends FrameLayout implements IRefreshDataView {
+public class RefreshCustomerLayout extends FrameLayout implements IRefreshDataView {
     public final static int DEFAULT_SIZE = 10;
     public final static int Refresh = 0;
     public final static int LoadMore = 1;
@@ -174,7 +171,6 @@ public class RefreshCustomerLayout<T> extends FrameLayout implements IRefreshDat
 
     /**
      * 刷新View的类型
-     * @attr ref R.styleable#refreshLayout_rl_refresh_type
      */
     public RefreshCustomerLayout setViewType(@Type int type) {
         this.mRefreshType = type;
@@ -338,7 +334,7 @@ public class RefreshCustomerLayout<T> extends FrameLayout implements IRefreshDat
                     setTotalPage(saveInstance.totalPage);
                     setData(saveInstance.beanList, saveInstance.loadMore);
                 }
-                else{  setMessage((T) saveInstance.error, saveInstance.content); }
+                else{  setMessage(saveInstance.error, saveInstance.content); }
                 setCurrentPage(saveInstance.currentPageIndex);
             }
         }
