@@ -8,3 +8,10 @@ RefreshLayout 是[BGARefreshLayout](https://github.com/bingoogolapple/BGARefresh
 - 兼容原有两个项目用法
 
 > compile 'com.ricky:refreshLayout:0.1'
+
+	allprojects {
+    repositories {
+        jcenter()
+        maven { url "https://jitpack.io" }
+    }
+   
