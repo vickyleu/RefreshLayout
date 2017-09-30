@@ -1,2 +1,5 @@
 <resources>
+    <string name="mPullDownRefreshText">下拉刷新</string>
+    <string name="mReleaseRefreshText">释放更新</string>
+    <string name="mRefreshingText">加载中...</string>
 </resources>

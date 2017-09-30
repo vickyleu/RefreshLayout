@@ -23,7 +23,7 @@ android {
 }
 
 dependencies {
-    compile 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.22'
+    compile 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.31'
     provided "com.android.support:recyclerview-v7:$support_version"
     provided "com.android.support:support-v4:$support_version"
 }
@@ -31,7 +31,7 @@ publish {
     userOrg = 'vihuela'
     groupId = 'com.ricky'
     artifactId = 'refreshLayout'
-    publishVersion = '0.2'
+    publishVersion = '0.3'
     desc = 'RefreshLayout compatibility recyclerView'
     website = 'https://github.com/vihuela/RefreshLayout'
 }

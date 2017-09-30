@@ -30,6 +30,9 @@ public class NormalRefreshViewHolder extends RefreshViewHolder {
      */
     public NormalRefreshViewHolder(Context context, boolean isLoadingMoreEnabled) {
         super(context, isLoadingMoreEnabled);
+        mPullDownRefreshText = mContext.getString(R.string.mPullDownRefreshText);
+        mReleaseRefreshText = mContext.getString(R.string.mReleaseRefreshText);
+        mRefreshingText = mContext.getString(R.string.mRefreshingText);
         initAnimation();
     }
 
