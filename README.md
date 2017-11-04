@@ -7,7 +7,7 @@ RefreshLayout 是[BGARefreshLayout](https://github.com/bingoogolapple/BGARefresh
 	- 提供两种加载更多逻辑：总页数、预设每次加载条数
 - 兼容原有两个项目用法
 
-> compile 'com.ricky:refreshLayout:0.3'
+> compile 'com.ricky:refreshLayout:0.4'
 
 	allprojects {
     repositories {

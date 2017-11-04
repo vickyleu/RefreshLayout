@@ -17,6 +17,7 @@ import com.github.refresh.util.CustomLoadMoreView;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -194,6 +195,7 @@ public class RefreshCustomerLayout extends FrameLayout implements IRefreshDataVi
         if (beanList == null || beanList.size() == 0) {
             //refresh trigger
             if (!loadMore) {
+                mAdapter.setNewData(beanList);
                 if (isEmpty() && mIRefreshStateView != null) {
                     mIRefreshStateView.showEmpty();
                 }
