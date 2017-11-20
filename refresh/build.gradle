@@ -31,7 +31,7 @@ publish {
     userOrg = 'vihuela'
     groupId = 'com.ricky'
     artifactId = 'refreshLayout'
-    publishVersion = '0.4'
+    publishVersion = '0.4.1'
     desc = 'RefreshLayout compatibility recyclerView'
     website = 'https://github.com/vihuela/RefreshLayout'
 }

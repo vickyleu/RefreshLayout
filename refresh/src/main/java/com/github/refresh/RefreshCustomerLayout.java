@@ -272,7 +272,7 @@ public class RefreshCustomerLayout extends FrameLayout implements IRefreshDataVi
     }
 
     public boolean isEmpty() {
-        return mAdapter.getItemCount() == 0;
+        return mAdapter.getData().isEmpty();
     }
 
     public int getPageStartOffset() {
