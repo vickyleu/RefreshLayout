@@ -190,7 +190,7 @@ public class RefreshCustomerLayout extends FrameLayout implements IRefreshDataVi
      * 设置数据源（请求发送后）
      */
     @SuppressWarnings("all")
-    public void setData(List beanList, boolean loadMore) {
+    public synchronized void setData(List beanList, boolean loadMore) {
 
         if (beanList == null || beanList.size() == 0) {
             //refresh trigger
