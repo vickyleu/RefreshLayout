@@ -3,14 +3,15 @@ package com.github.refresh;
 
 import android.content.Context;
 import android.content.res.TypedArray;
-import android.support.annotation.IntDef;
-import android.support.annotation.Nullable;
-import android.support.v7.widget.RecyclerView;
+import androidx.annotation.IntDef;
+import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.RecyclerView;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.FrameLayout;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
+import com.chad.library.adapter.base.listener.OnLoadMoreListener;
 import com.github.refresh.interfaces.IRefreshDataView;
 import com.github.refresh.interfaces.IRefreshStateView;
 import com.github.refresh.util.CustomLoadMoreView;
@@ -74,22 +75,23 @@ public class RefreshCustomerLayout extends FrameLayout implements IRefreshDataVi
     private void requireLoadMore() {
         if (mAdapter != null) {
             isLoadMore = true;
-            mAdapter.setLoadMoreView(new CustomLoadMoreView());//customer loadView
-            mAdapter.setOnLoadMoreListener(new BaseQuickAdapter.RequestLoadMoreListener() {
+            mAdapter.getLoadMoreModule().setLoadMoreView(new CustomLoadMoreView());
+            mAdapter.getLoadMoreModule().setOnLoadMoreListener(new OnLoadMoreListener() {
                 @Override
-                public void onLoadMoreRequested() {
+                public void onLoadMore() {
                     if (mIRefreshListener != null
                             && mRefreshLayout.getCurrentRefreshStatus() == RefreshLayout.RefreshStatus.IDLE) {
                         if (isLoadMore) {
                             mIRefreshListener.onLoadMore(RefreshCustomerLayout.this, currentPage + 1);
                         } else {
-                            mAdapter.loadMoreEnd();
+                            mAdapter.getLoadMoreModule().loadMoreEnd();
                         }
                     } else {
-                        mAdapter.loadMoreComplete();
+                        mAdapter.getLoadMoreModule().loadMoreComplete();
                     }
                 }
-            }, mRecyclerView);
+            });
+            mAdapter.setRecyclerView(mRecyclerView);
         }
 
     }
@@ -201,7 +203,7 @@ public class RefreshCustomerLayout extends FrameLayout implements IRefreshDataVi
                 }
                 mRefreshLayout.endRefreshing();
             } else {
-                mAdapter.loadMoreEnd();
+                mAdapter.getLoadMoreModule().loadMoreEnd();
                 setLoadMore(false);
             }
             return;
@@ -223,21 +225,21 @@ public class RefreshCustomerLayout extends FrameLayout implements IRefreshDataVi
                 currentPage++;
                 setLoadMore(valid);
                 if (valid) {
-                    mAdapter.loadMoreComplete();
+                    mAdapter.getLoadMoreModule().loadMoreComplete();
                 } else {
-                    mAdapter.loadMoreEnd();
+                    mAdapter.getLoadMoreModule().loadMoreEnd();
                 }
                 return;
             }
             //有传递totalPage，（验证发生在这次加载后）
             if (currentPage < (totalPage + pageStartOffset) - 1) {
                 mAdapter.addData(beanList);
-                mAdapter.loadMoreComplete();
+                mAdapter.getLoadMoreModule().loadMoreComplete();
                 currentPage++;
                 setLoadMore(currentPage < (totalPage + pageStartOffset) - 1);
             } else {
                 setLoadMore(false);
-                mAdapter.loadMoreEnd();
+                mAdapter.getLoadMoreModule().loadMoreEnd();
             }
         }
     }
@@ -254,7 +256,7 @@ public class RefreshCustomerLayout extends FrameLayout implements IRefreshDataVi
                     mRefreshLayout.endRefreshing();
                     mIRefreshStateView.showMessage(content);
                 } else {
-                    mAdapter.loadMoreFail();
+                    mAdapter.getLoadMoreModule().loadMoreFail();
                 }
             }
         }

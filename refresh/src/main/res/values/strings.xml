@@ -2,4 +2,9 @@
     <string name="mPullDownRefreshText">下拉刷新</string>
     <string name="mReleaseRefreshText">释放更新</string>
     <string name="mRefreshingText">加载中...</string>
+
+    <string name="loading" translatable="false">加载中，请稍候&#8230;</string>
+    <string name="load_end" translatable="false">暂无更多</string>
+    <string name="load_failed" translatable="false">加载失败，点击重试</string>
+
 </resources>

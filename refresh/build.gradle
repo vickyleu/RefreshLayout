@@ -1,18 +1,14 @@
 apply plugin: 'com.android.library'
-apply plugin: 'com.novoda.bintray-release'
 
 android {
-    compileSdkVersion 25
-    buildToolsVersion "25.0.3"
+    compileSdkVersion 30
+    buildToolsVersion "30.0.2"
 
     defaultConfig {
         minSdkVersion 16
-        targetSdkVersion 25
+        targetSdkVersion 28
         versionCode 1
         versionName "1.0"
-
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-
     }
     buildTypes {
         release {
@@ -23,15 +19,8 @@ android {
 }
 
 dependencies {
-    compile 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.31'
-    provided "com.android.support:recyclerview-v7:$support_version"
-    provided "com.android.support:support-v4:$support_version"
-}
-publish {
-    userOrg = 'vihuela'
-    groupId = 'com.ricky'
-    artifactId = 'refreshLayout'
-    publishVersion = '0.4.2'
-    desc = 'RefreshLayout compatibility recyclerView'
-    website = 'https://github.com/vihuela/RefreshLayout'
+    compileOnly 'com.github.CymChad:BaseRecyclerViewAdapterHelper:3.0.6'
+    compileOnly 'androidx.recyclerview:recyclerview:1.2.1'
+    implementation 'androidx.viewpager:viewpager:1.0.0@aar'
+    compileOnly 'androidx.appcompat:appcompat:1.3.1'
 }

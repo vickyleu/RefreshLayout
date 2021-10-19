@@ -2,11 +2,12 @@ package com.github.refresh;
 
 import android.content.Context;
 import android.graphics.drawable.AnimationDrawable;
-import android.support.annotation.DrawableRes;
-import android.support.v4.view.ViewCompat;
 import android.util.AttributeSet;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+
+import androidx.annotation.DrawableRes;
+import androidx.core.view.ViewCompat;
 
 public class MeiTuanRefreshView extends RelativeLayout {
     private ImageView mPullDownView;

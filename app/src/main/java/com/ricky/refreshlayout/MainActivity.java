@@ -1,15 +1,16 @@
 package com.ricky.refreshlayout;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+
 import com.chad.library.adapter.base.BaseQuickAdapter;
-import com.chad.library.adapter.base.BaseViewHolder;
+import com.chad.library.adapter.base.viewholder.BaseViewHolder;
 import com.github.refresh.RefreshCustomerLayout;
 import com.github.refresh.interfaces.IRefreshStateView;
 import com.github.refresh.util.CommonItemDecoration;
@@ -27,9 +28,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         rl = (RefreshCustomerLayout) findViewById(R.id.mRefreshLayout);
-
-        rl
-                .setLayoutManager(new LinearLayoutManager(this))
+        rl.setLayoutManager(new LinearLayoutManager(this))
                 .setViewType(RefreshCustomerLayout.Refresh_LoadMore)
                 .setPageStartOffset(0)
                 .setLoadSize(5)

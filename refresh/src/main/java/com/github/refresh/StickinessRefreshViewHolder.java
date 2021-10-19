@@ -2,8 +2,8 @@ package com.github.refresh;
 
 import android.content.Context;
 import android.graphics.Color;
-import android.support.annotation.ColorRes;
-import android.support.annotation.DrawableRes;
+import androidx.annotation.ColorRes;
+import androidx.annotation.DrawableRes;
 import android.view.View;
 
 /**
