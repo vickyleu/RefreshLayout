@@ -1,1 +1,1 @@
-include ':refresh'
+rootProject.name = 'RefreshLayout'
