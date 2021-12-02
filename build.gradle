@@ -3,59 +3,71 @@
 buildscript {
     repositories {
         all { ArtifactRepository repo ->
-            if(repo instanceof MavenArtifactRepository){
+            if (repo instanceof MavenArtifactRepository) {
                 def url = repo.url.toString()
                 if (
-                (url.startsWith('http://repo1.maven.org/maven2'))||
-                        (url.startsWith('https://repo1.maven.org/maven2'))||
-                        (url.startsWith('http://jcenter.bintray.com'))||
-                        (url.startsWith('https://jcenter.bintray.com'))||
-                        (url.startsWith('http://maven.google.com'))||
+                (url.startsWith('http://repo1.maven.org/maven2')) ||
+                        (url.startsWith('https://repo1.maven.org/maven2')) ||
+                        (url.startsWith('http://jcenter.bintray.com')) ||
+                        (url.startsWith('https://jcenter.bintray.com')) ||
+                        (url.startsWith('http://maven.google.com')) ||
                         (url.startsWith('https://maven.google.com'))
-                ){
+                ) {
                     remove repo
                 }
             }
         }
-        maven { url 'https://maven.aliyun.com/repository/central'
+        maven {
+            url 'https://maven.aliyun.com/repository/central'
             allowInsecureProtocol = true
         }
-        maven { url 'https://maven.aliyun.com/repository/public'
+        maven {
+            url 'https://maven.aliyun.com/repository/public'
             allowInsecureProtocol = true
         }
-        maven { url 'https://maven.aliyun.com/repository/jcenter'
+        maven {
+            url 'https://maven.aliyun.com/repository/jcenter'
             allowInsecureProtocol = true
         }
-        maven { url 'https://maven.aliyun.com/repository/google'
+        maven {
+            url 'https://maven.aliyun.com/repository/google'
             allowInsecureProtocol = true
         }
-        maven { url 'https://maven.aliyun.com/repository/gradle-plugin'
+        maven {
+            url 'https://maven.aliyun.com/repository/gradle-plugin'
             allowInsecureProtocol = true
         }
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:7.0.3'
-        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.+'
     }
 }
 
 allprojects {
     repositories {
-        maven { url 'https://maven.aliyun.com/repository/central'
+        maven {
+            url 'https://maven.aliyun.com/repository/central'
             allowInsecureProtocol = true
         }
-        maven { url 'https://maven.aliyun.com/repository/public'
+        maven {
+            url 'https://maven.aliyun.com/repository/public'
             allowInsecureProtocol = true
         }
-        maven { url 'https://maven.aliyun.com/repository/jcenter'
+        maven {
+            url 'https://maven.aliyun.com/repository/jcenter'
             allowInsecureProtocol = true
         }
-        maven { url 'https://maven.aliyun.com/repository/google'
+        maven {
+            url 'https://maven.aliyun.com/repository/google'
+            allowInsecureProtocol = true
+        }
+        maven {
+            url 'https://jitpack.io'
             allowInsecureProtocol = true
         }
     }
     tasks.withType(Javadoc) {
-        options{
+        options {
             encoding "UTF-8"
             charSet 'UTF-8'
             links "http://docs.oracle.com/javase/7/docs/api"
