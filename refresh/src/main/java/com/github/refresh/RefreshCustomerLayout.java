@@ -91,7 +91,7 @@ public class RefreshCustomerLayout extends FrameLayout implements IRefreshDataVi
                     }
                 }
             });
-            mAdapter.setRecyclerView(mRecyclerView);
+//            mAdapter.setRecyclerView(mRecyclerView);
         }
 
     }
