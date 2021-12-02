@@ -1,103 +1,23 @@
-group 'com.github.vickyleu'
-version '1.0.0'
 buildscript {
     repositories {
-        all { ArtifactRepository repo ->
-            if (repo instanceof MavenArtifactRepository) {
-                def url = repo.url.toString()
-                if (
-                (url.startsWith('http://repo1.maven.org/maven2')) ||
-                        (url.startsWith('https://repo1.maven.org/maven2')) ||
-                        (url.startsWith('http://jcenter.bintray.com')) ||
-                        (url.startsWith('https://jcenter.bintray.com')) ||
-                        (url.startsWith('http://maven.google.com')) ||
-                        (url.startsWith('https://maven.google.com'))
-                ) {
-                    remove repo
-                }
-            }
-        }
-        maven {
-            url 'https://maven.aliyun.com/repository/central'
-            allowInsecureProtocol = true
-        }
-        maven {
-            url 'https://maven.aliyun.com/repository/public'
-            allowInsecureProtocol = true
-        }
-        maven {
-            url 'https://maven.aliyun.com/repository/jcenter'
-            allowInsecureProtocol = true
-        }
-        maven {
-            url 'https://maven.aliyun.com/repository/google'
-            allowInsecureProtocol = true
-        }
-        maven {
-            url 'https://maven.aliyun.com/repository/gradle-plugin'
-            allowInsecureProtocol = true
-        }
+        google()
+        jcenter()
+        mavenCentral()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.0.1'
+        classpath "com.android.tools.build:gradle:4.0.0"
     }
 }
 
 allprojects {
     repositories {
-        maven {
-            url 'https://maven.aliyun.com/repository/central'
-            allowInsecureProtocol = true
-        }
-        maven {
-            url 'https://maven.aliyun.com/repository/public'
-            allowInsecureProtocol = true
-        }
-        maven {
-            url 'https://maven.aliyun.com/repository/jcenter'
-            allowInsecureProtocol = true
-        }
-        maven {
-            url 'https://maven.aliyun.com/repository/google'
-            allowInsecureProtocol = true
-        }
-        maven {
-            url 'https://jitpack.io'
-            allowInsecureProtocol = true
-        }
-    }
-    tasks.withType(Javadoc) {
-        options {
-            encoding "UTF-8"
-            charSet 'UTF-8'
-            links "http://docs.oracle.com/javase/7/docs/api"
-        }
+        mavenCentral()
+        google()
+        maven { url "https://jitpack.io" }
+        jcenter()
     }
 }
-apply plugin: 'com.android.library'
-android {
-    compileSdkVersion 30
-    defaultConfig {
-        minSdkVersion 16
-        //noinspection ExpiredTargetSdkVersion
-        targetSdkVersion 28
-        versionCode 1
-        versionName "1.0"
-    }
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-        }
-    }
-    lintOptions {
-        abortOnError false
-    }
-}
-dependencies {
-    implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:3.0.7'
-    compileOnly 'androidx.recyclerview:recyclerview:1.2.1'
-    implementation 'androidx.viewpager:viewpager:1.0.0@aar'
-    //noinspection GradleDependency
-    compileOnly 'androidx.appcompat:appcompat:1.3.1'
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
 }
